@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {colors} from '../../../constants/colors';
 import UserCard from './UserCard';
@@ -20,7 +20,10 @@ const CardsList: React.FC<Props> = ({data, cardType}) => {
     state => state.HomepageSlice,
   );
 
-  const currentUserName = usersData[currentUserId - 1]?.name || '';
+  const user = useMemo(() => {
+    return usersData.find(userData => userData.id === currentUserId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUserId]);
 
   const renderItem = (item: IUser | IPost, index: number) => {
     return (
@@ -46,7 +49,7 @@ const CardsList: React.FC<Props> = ({data, cardType}) => {
   return (
     <View style={styles.container}>
       <BoldText style={styles.header_list}>
-        {isUserCard ? 'Users' : `${currentUserName} Posts`}
+        {isUserCard ? 'Users' : `${user?.name ?? ''} Posts`}
       </BoldText>
       <FlatList
         style={styles.list_style}

@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   deleteIcon: {
     fontSize: 22,
     alignSelf: 'center',
-    marginBottom: 20,
   },
 });
 

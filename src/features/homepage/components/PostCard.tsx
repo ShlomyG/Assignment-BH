@@ -49,11 +49,12 @@ const styles = StyleSheet.create({
     padding: 8,
     margin: 6,
     borderRadius: 8,
+    paddingBottom: 26,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 4,
     paddingRight: 16,
   },
   body: {
@@ -61,8 +62,8 @@ const styles = StyleSheet.create({
   },
   deleteIcon: {
     position: 'absolute',
-    left: '85%',
-    top: 4,
+    left: '45%',
+    bottom: 0,
   },
 });
 

@@ -14,23 +14,21 @@ interface HomeScreenState {
 const initialState: HomeScreenState = {
   usersData: [
     {
-      id: 1,
-      name: 'Leanne Graham',
-      username: 'Bret',
-      email: 'Sincere@april.biz',
+      id: -1,
+      name: '',
+      username: '',
+      email: '',
       address: {
-        street: 'Kulas Light',
-        suite: 'Apt. 556',
-        city: 'Gwenborough',
+        street: '',
+        suite: '',
+        city: '',
         geo: {
-          lat: '-37.3159',
-          lng: '81.1496',
+          lat: '',
+          lng: '',
         },
       },
       company: {
-        name: 'Romaguera-Crona',
-        catchPhrase: 'Multi-layered client-server neural-net',
-        bs: 'harness real-time e-markets',
+        name: '',
       },
     },
   ],
