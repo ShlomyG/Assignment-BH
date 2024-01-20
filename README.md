@@ -1,2 +1,8 @@
 # Assignment-BH
-Interactive Users Page
+Interactive Users Page RN
+
+Technology
+----------
+- React-Native
+- Typescript
+- Redux-Toolkit
