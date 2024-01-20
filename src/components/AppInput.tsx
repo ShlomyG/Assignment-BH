@@ -8,6 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {colors} from '../constants/colors';
+import {EInputReturnType} from '../features/editPostModal/models/editModalModels';
 
 interface AppInputProps {
   value: string;
@@ -19,7 +20,7 @@ interface AppInputProps {
   inputStyle?: ViewStyle;
   textStyle?: ViewStyle;
   onSubmitEditing?: () => void;
-  returnKeyType?: 'done' | 'next';
+  returnKeyType?: EInputReturnType;
 }
 
 const AppInput: React.FC<AppInputProps> = forwardRef<TextInput, AppInputProps>(

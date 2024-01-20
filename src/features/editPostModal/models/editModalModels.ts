@@ -3,3 +3,8 @@ export interface IPostEditDetails {
   title: string;
   body?: number;
 }
+
+export enum EInputReturnType {
+  DONE = 'done',
+  NEXT = 'next',
+}

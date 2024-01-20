@@ -16,6 +16,7 @@ import AppInput from '../../components/AppInput';
 import {setEditPost} from '../homepage/state/HomeSlice';
 import ErrorMessage from '../../components/ErrorMessage';
 import BoldText from '../../components/BoldText';
+import { EInputReturnType } from './models/editModalModels';
 
 interface Props {
   isModalVisible: boolean;
@@ -72,7 +73,7 @@ const EditPostModal: React.FC<Props> = ({isModalVisible}) => {
                     setTitleText(text);
                   }}
                   label={editPostStrings.POST_TITLE}
-                  returnKeyType="next"
+                  returnKeyType={EInputReturnType.NEXT}
                   onSubmitEditing={() => {
                     (
                       bodyInputRef as React.RefObject<TextInput>
@@ -85,7 +86,7 @@ const EditPostModal: React.FC<Props> = ({isModalVisible}) => {
                   textStyle={styles.textarea_text}
                   inputStyle={styles.textarea_view}
                   value={bodyText}
-                  returnKeyType="done"
+                  returnKeyType={EInputReturnType.DONE}
                   onChange={(text: string) => {
                     setBodyText(text);
                   }}
