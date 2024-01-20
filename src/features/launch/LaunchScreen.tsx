@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Image} from 'react-native';
 import AppButton from '../../components/AppButton';
 import {LaunchStrings} from '../../constants/strings';
 import {Screens} from '../../constants/screens';
@@ -7,6 +7,7 @@ import {navigate} from '../../navigation/RootNavigation';
 import {useAppDispatch} from '../../store/Store';
 import {getUsersDataAction} from '../homepage/state/HomeAction';
 import {initAxios} from '../../utils/NetworkManager';
+import {markerImage} from '../../constants/constants';
 
 const LaunchScreen: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +23,10 @@ const LaunchScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title_text}>{LaunchStrings.TITLE}</Text>
+      <View style={styles.title_container}>
+        <Text style={styles.title_text}>{LaunchStrings.APP_NAME}</Text>
+        <Image source={markerImage} />
+      </View>
       <AppButton text={LaunchStrings.BUTTON_TEXT} onPress={handleEnterApp} />
     </View>
   );
@@ -34,8 +38,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  title_container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 18,
+  },
   title_text: {
-    marginTop: 50,
+    marginTop: 60,
     fontWeight: '700',
     fontSize: 28,
   },

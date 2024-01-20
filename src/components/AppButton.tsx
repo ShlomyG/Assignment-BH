@@ -20,7 +20,7 @@ const AppButton: React.FC<AppButtonProps> = ({
       style={[
         styles.button,
         {
-          backgroundColor: enable ? colors.gold : colors.light_grey,
+          backgroundColor: enable ? colors.green : colors.light_grey,
         },
         styleButton,
       ]}

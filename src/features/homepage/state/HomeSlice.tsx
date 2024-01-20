@@ -55,6 +55,9 @@ const HomeSlice = createSlice({
         user => user.id !== action.payload,
       );
       delete state.postsCache[action.payload];
+      if (state.currentUserId === action.payload) {
+        state.currentUserId = -1;
+      }
     },
     setDeletePostById(state, action: PayloadAction<number>) {
       const currentUserPosts = state.postsCache[state.currentUserId];
