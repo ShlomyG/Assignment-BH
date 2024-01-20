@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: 10,
     paddingRight: 30,
-    paddingVertical: 20,
+    paddingVertical: 10,
     borderColor: colors.black,
     borderWidth: 0.5,
   },
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   subTitleText: {
     fontSize: 10,
-    color: colors.grey,
+    color: colors.dark_grey,
   },
   leftContainer: {
     flex: 0.3,

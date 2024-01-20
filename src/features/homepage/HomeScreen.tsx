@@ -5,20 +5,17 @@ import CardsList from './components/CardsList';
 import {ECardType} from './models/usersModel';
 
 const HomeScreen: React.FC = () => {
-  const {usersData, postsCache, currentUserIndex} = useAppSelector(
+  const {usersData, postsCache, currentUserId} = useAppSelector(
     state => state.HomepageSlice,
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.upper_section}>
-        <CardsList
-          data={postsCache[currentUserIndex]}
-          cardType={ECardType.POST}
-        />
+        <CardsList data={usersData} cardType={ECardType.USER} />
       </View>
       <View style={styles.bottom_section}>
-        <CardsList data={usersData} cardType={ECardType.USER} />
+        <CardsList data={postsCache[currentUserId]} cardType={ECardType.POST} />
       </View>
     </View>
   );
@@ -29,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   upper_section: {
-    flex: 0.25,
+    flex: 0.6,
     width: '100%',
   },
   bottom_section: {

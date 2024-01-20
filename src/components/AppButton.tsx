@@ -20,7 +20,7 @@ const AppButton: React.FC<AppButtonProps> = ({
       style={[
         styles.button,
         {
-          backgroundColor: enable ? colors.gold : colors.light_grey,
+          backgroundColor: enable ? colors.green : colors.light_grey,
         },
         styleButton,
       ]}
@@ -35,10 +35,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    borderRadius: 20,
+    borderRadius: 14,
     height: 43,
     width: 200,
-    marginVertical: 20,
+    marginTop: 14,
   },
   text: {
     color: 'white',

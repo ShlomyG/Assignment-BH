@@ -1,30 +1,40 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {IPost} from '../models/postsModel';
 import {colors} from '../../../constants/colors';
 import {SCREEN_WIDTH} from '../../../constants/device';
 import DeleteButton from '../../../components/DeleteButton';
 import {useAppDispatch} from '../../../store/Store';
-import {setDeletePost} from '../state/HomeSlice';
+import {setCurrentPostIndex, setDeletePostById} from '../state/HomeSlice';
+import {setModalVisible} from '../../editPostModal/state/ModalSlice';
 
-const PostCard: React.FC<IPost> = item => {
-  const {title, body, id} = item;
+interface PostCardProps {
+  item: IPost;
+  index: number;
+}
+
+const PostCard: React.FC<PostCardProps> = ({item, index}) => {
   const dispatch = useAppDispatch();
   return (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => {
+        dispatch(setCurrentPostIndex(index));
+        dispatch(setModalVisible(true));
+      }}>
       <DeleteButton
         action={() => {
-          dispatch(setDeletePost(id));
+          dispatch(setDeletePostById(item?.id as number));
         }}
         style={styles.deleteIcon}
       />
       <Text numberOfLines={2} style={styles.title}>
-        {title}
+        {item?.title}
       </Text>
       <Text numberOfLines={4} style={styles.body}>
-        {body}
+        {item?.body}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -35,8 +45,8 @@ const styles = StyleSheet.create({
   },
   card: {
     width: SCREEN_WIDTH / 3 - 16,
-    backgroundColor: colors.blue,
-    padding: 6,
+    backgroundColor: colors.gold,
+    padding: 8,
     margin: 6,
     borderRadius: 8,
   },

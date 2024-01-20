@@ -6,6 +6,9 @@ import {Screens} from '../constants/screens';
 import HomeScreen from '../features/homepage/HomeScreen';
 import LaunchScreen from '../features/launch/LaunchScreen';
 import MapScreen from '../features/map/MapScreen';
+import EditPostModal from '../features/editPostModal/EditPostModal';
+import {useAppSelector} from '../store/Store';
+import {Emojis, HomeStrings, LaunchStrings} from '../constants/strings';
 
 export type RootStackParamList = {
   launchScreen: undefined;
@@ -14,21 +17,26 @@ export type RootStackParamList = {
 };
 const StackNavigator = createNativeStackNavigator<RootStackParamList>();
 const AppNavigator: React.FC = () => {
+  const {modalVisible} = useAppSelector(state => state.EditPostModalSlice);
+
   return (
     <>
-      {/* <BaseBottomSheet /> */}
+      <EditPostModal isModalVisible={modalVisible} />
       <StackNavigator.Navigator initialRouteName={Screens.LAUNCH_SCREEN}>
         <StackNavigator.Screen
           name={Screens.LAUNCH_SCREEN}
           component={LaunchScreen}
+          options={{title: LaunchStrings.TITLE}}
         />
         <StackNavigator.Screen
           name={Screens.HOMEPAGE_SCREEN}
           component={HomeScreen}
+          options={{title: HomeStrings.TITLE}}
         />
         <StackNavigator.Screen
           name={Screens.MAP_SCREEN}
           component={MapScreen}
+          options={{title: Emojis.MAP}}
           initialParams={undefined}
         />
       </StackNavigator.Navigator>

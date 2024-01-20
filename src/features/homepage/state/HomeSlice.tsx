@@ -6,7 +6,7 @@ import {IPost} from '../models/postsModel';
 interface HomeScreenState {
   usersData: IUser[];
   postsCache: Record<number, IPost[]>;
-  currentUserIndex: number;
+  currentUserId: number;
   currentPostIndex: number;
   isLoading: boolean;
 }
@@ -35,7 +35,7 @@ const initialState: HomeScreenState = {
     },
   ],
   postsCache: {},
-  currentUserIndex: -1,
+  currentUserId: -1,
   currentPostIndex: -1,
   isLoading: false,
 };
@@ -47,20 +47,30 @@ const HomeSlice = createSlice({
     setUsersData(state, action: PayloadAction<IUser[]>) {
       state.usersData = action.payload;
     },
+    setCurrentPostIndex(state, action: PayloadAction<number>) {
+      state.currentPostIndex = action.payload;
+    },
     setDeleteUser(state, action: PayloadAction<number>) {
       state.usersData = state.usersData.filter(
         user => user.id !== action.payload,
       );
       delete state.postsCache[action.payload];
+      if (state.currentUserId === action.payload) {
+        state.currentUserId = -1;
+      }
     },
-    setDeletePost(state, action: PayloadAction<number>) {
-      const currentUserPosts = state.postsCache[state.currentUserIndex];
+    setDeletePostById(state, action: PayloadAction<number>) {
+      const currentUserPosts = state.postsCache[state.currentUserId];
       if (currentUserPosts) {
-        // Remove post from state.postsCache[state.currentUserIndex]
-        state.postsCache[state.currentUserIndex] = currentUserPosts.filter(
+        // Remove post from state.postsCache[state.currentUserId]
+        state.postsCache[state.currentUserId] = currentUserPosts.filter(
           post => post.id !== action.payload,
         );
       }
+    },
+    setEditPost(state, action: PayloadAction<IPost>) {
+      const currentPostIndex = state.currentPostIndex;
+      state.postsCache[state.currentUserId][currentPostIndex] = action.payload;
     },
     resetHomeState: () => initialState,
   },
@@ -77,9 +87,9 @@ const HomeSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(getPostsForUserAction.fulfilled, (state, action) => {
-      const {userId} = action.payload[0];
+      const userId = action.payload[0]?.userId || -1;
       state.postsCache[userId] = action.payload;
-      state.currentUserIndex = userId;
+      state.currentUserId = userId as number;
       state.isLoading = false;
     });
     builder.addCase(getPostsForUserAction.pending, state => {
@@ -92,6 +102,12 @@ const HomeSlice = createSlice({
   },
 });
 
-export const {resetHomeState, setUsersData, setDeleteUser, setDeletePost} =
-  HomeSlice.actions;
+export const {
+  resetHomeState,
+  setUsersData,
+  setDeleteUser,
+  setDeletePostById,
+  setCurrentPostIndex,
+  setEditPost,
+} = HomeSlice.actions;
 export default HomeSlice.reducer;

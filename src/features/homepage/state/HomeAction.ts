@@ -25,7 +25,7 @@ export const getPostsForUserAction: AsyncThunk<
 > = createAsyncThunk(
   '/getPostsForUser',
   async (userId, {rejectWithValue, getState}) => {
-    const state: RootState = getState() as RootState; // Explicitly type the state
+    const state: RootState = getState() as RootState;
     const cachedPosts = state.HomepageSlice.postsCache[userId] || [];
 
     // Check if posts are already available in the state
