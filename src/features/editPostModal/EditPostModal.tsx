@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
   Keyboard,
+  TextInput,
 } from 'react-native';
 import Modal from 'react-native-modal';
 import {useAppDispatch, useAppSelector} from '../../store/Store';
@@ -29,6 +30,8 @@ const EditPostModal: React.FC<Props> = ({isModalVisible}) => {
   const [titleText, setTitleText] = useState<string>('');
   const [bodyText, setBodyText] = useState<string>('');
   const postDetails = postsCache[currentUserId]?.[currentPostIndex];
+  const titleInputRef = useRef(null);
+  const bodyInputRef = useRef(null);
 
   useEffect(() => {
     if (postDetails) {
@@ -63,17 +66,26 @@ const EditPostModal: React.FC<Props> = ({isModalVisible}) => {
               </BoldText>
               <View>
                 <AppInput
+                  ref={titleInputRef}
                   value={titleText}
                   onChange={(text: string) => {
                     setTitleText(text);
                   }}
                   label={editPostStrings.POST_TITLE}
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    (
+                      bodyInputRef as React.RefObject<TextInput>
+                    ).current?.focus();
+                  }}
                 />
                 <AppInput
+                  ref={bodyInputRef}
                   numberOfLines={8}
                   textStyle={styles.textarea_text}
                   inputStyle={styles.textarea_view}
                   value={bodyText}
+                  returnKeyType="done"
                   onChange={(text: string) => {
                     setBodyText(text);
                   }}

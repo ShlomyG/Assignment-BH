@@ -1,12 +1,12 @@
+import React, {ForwardedRef, forwardRef} from 'react';
 import {
-  KeyboardTypeOptions,
-  StyleSheet,
   View,
-  Text,
   TextInput,
+  StyleSheet,
+  Text,
+  KeyboardTypeOptions,
   ViewStyle,
 } from 'react-native';
-import React from 'react';
 import {colors} from '../constants/colors';
 
 interface AppInputProps {
@@ -18,37 +18,49 @@ interface AppInputProps {
   numberOfLines?: number;
   inputStyle?: ViewStyle;
   textStyle?: ViewStyle;
+  onSubmitEditing?: () => void;
+  returnKeyType?: 'done' | 'next';
 }
 
-const AppInput: React.FC<AppInputProps> = ({
-  label,
-  value,
-  onChange,
-  keyboardType = 'default',
-  editable = true,
-  numberOfLines = 1,
-  textStyle,
-  inputStyle,
-}) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text_name}>{label}</Text>
-      <View style={[styles.input_container, inputStyle]}>
-        <TextInput
-          multiline={numberOfLines > 1}
-          autoCapitalize={'none'}
-          style={[styles.text_input, textStyle]}
-          value={value}
-          onChangeText={onChange}
-          keyboardType={keyboardType}
-          editable={editable}
-          selectTextOnFocus={editable}
-          numberOfLines={numberOfLines}
-        />
+const AppInput: React.FC<AppInputProps> = forwardRef<TextInput, AppInputProps>(
+  (
+    {
+      label,
+      value,
+      onChange,
+      keyboardType = 'default',
+      editable = true,
+      numberOfLines = 1,
+      textStyle,
+      inputStyle,
+      onSubmitEditing,
+      returnKeyType = 'done',
+    },
+    ref: ForwardedRef<TextInput>,
+  ) => {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text_name}>{label}</Text>
+        <View style={[styles.input_container, inputStyle]}>
+          <TextInput
+            multiline={numberOfLines > 1}
+            autoCapitalize={'none'}
+            style={[styles.text_input, textStyle]}
+            value={value}
+            onChangeText={onChange}
+            keyboardType={keyboardType}
+            editable={editable}
+            selectTextOnFocus={editable}
+            numberOfLines={numberOfLines}
+            ref={ref}
+            returnKeyType={returnKeyType}
+            onSubmitEditing={onSubmitEditing}
+          />
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  },
+);
 
 export default AppInput;
 
