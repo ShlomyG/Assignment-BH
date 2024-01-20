@@ -1,6 +1,7 @@
 import {configureStore, ThunkAction, Action} from '@reduxjs/toolkit';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import HomeSlice from '../features/homepage/state/HomeSlice';
+import ModalSlice from '../features/editPostModal/state/ModalSlice';
 
 export const resetState = () => ({
   type: 'RESET_STATE',
@@ -9,7 +10,7 @@ export const resetState = () => ({
 const store = configureStore({
   reducer: {
     HomepageSlice: HomeSlice,
-    // BottomSheetSlice: bottomSheetSlice,
+    EditPostModalSlice: ModalSlice,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

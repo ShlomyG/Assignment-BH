@@ -6,6 +6,8 @@ import {Screens} from '../constants/screens';
 import HomeScreen from '../features/homepage/HomeScreen';
 import LaunchScreen from '../features/launch/LaunchScreen';
 import MapScreen from '../features/map/MapScreen';
+import EditPostModal from '../features/editPostModal/EditPostModal';
+import {useAppSelector} from '../store/Store';
 
 export type RootStackParamList = {
   launchScreen: undefined;
@@ -14,9 +16,11 @@ export type RootStackParamList = {
 };
 const StackNavigator = createNativeStackNavigator<RootStackParamList>();
 const AppNavigator: React.FC = () => {
+  const {modalVisible} = useAppSelector(state => state.EditPostModalSlice);
+
   return (
     <>
-      {/* <BaseBottomSheet /> */}
+      <EditPostModal isModalVisible={modalVisible} />
       <StackNavigator.Navigator initialRouteName={Screens.LAUNCH_SCREEN}>
         <StackNavigator.Screen
           name={Screens.LAUNCH_SCREEN}

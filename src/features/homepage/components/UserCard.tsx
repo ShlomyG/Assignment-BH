@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   subTitleText: {
     fontSize: 10,
-    color: colors.grey,
+    color: colors.dark_grey,
   },
   leftContainer: {
     flex: 0.3,

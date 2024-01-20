@@ -21,3 +21,10 @@ export const Emojis = {
   DELETE: '✖',
   USER: '👤',
 };
+
+export const editPostStrings = {
+  TITLE: 'Edit Post',
+  POST_TITLE: 'Title',
+  POST_BODY: 'Body',
+  ERROR_REQUIRED: 'all fields are required',
+};

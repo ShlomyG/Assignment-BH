@@ -15,19 +15,19 @@ interface Props {
 
 const CardsList: React.FC<Props> = ({data, cardType}) => {
   const isUserCard = cardType === ECardType.USER;
-  const {usersData, currentUserIndex} = useAppSelector(
+  const {usersData, currentUserId} = useAppSelector(
     state => state.HomepageSlice,
   );
 
-  const currentUserName = usersData[currentUserIndex]?.name || '';
+  const currentUserName = usersData[currentUserId]?.name || '';
 
-  const renderItem = (item: IUser | IPost) => {
+  const renderItem = (item: IUser | IPost, index: number) => {
     return (
       <>
         {isUserCard ? (
           <UserCard {...(item as IUser)} />
         ) : (
-          <PostCard {...(item as IPost)} />
+          <PostCard item={item as IPost} index={index} />
         )}
       </>
     );
@@ -44,9 +44,9 @@ const CardsList: React.FC<Props> = ({data, cardType}) => {
         bounces={false}
         horizontal={!isUserCard}
         contentContainerStyle={styles.listContainer}
-        keyExtractor={item => item?.id?.toString()}
+        keyExtractor={(item, index) => item?.id?.toString() || index.toString()}
         showsVerticalScrollIndicator={false}
-        renderItem={({item}) => renderItem(item)}
+        renderItem={({item, index}) => renderItem(item, index)}
       />
     </View>
   );
