@@ -35,7 +35,7 @@ const AppInput: React.FC<AppInputProps> = forwardRef<TextInput, AppInputProps>(
       textStyle,
       inputStyle,
       onSubmitEditing,
-      returnKeyType = 'done',
+      returnKeyType = EInputReturnType.DONE,
     },
     ref: ForwardedRef<TextInput>,
   ) => {
