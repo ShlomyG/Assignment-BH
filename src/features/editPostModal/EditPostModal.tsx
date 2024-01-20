@@ -16,7 +16,7 @@ import AppInput from '../../components/AppInput';
 import {setEditPost} from '../homepage/state/HomeSlice';
 import ErrorMessage from '../../components/ErrorMessage';
 import BoldText from '../../components/BoldText';
-import { EInputReturnType } from './models/editModalModels';
+import {EInputReturnType} from './models/editModalModels';
 
 interface Props {
   isModalVisible: boolean;
