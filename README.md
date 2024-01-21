@@ -9,13 +9,10 @@ Technology
 
 Usage
 -------------
-Navigate to the Home Screen to view the list of users and their data.
-
-Click on a user card to see their posts and edit them if needed.
-
-Remove user or post in 'x' click
-
-Click on geolocation coordinates to view the user's location on the map.
+- Navigate to the Home Screen to view the list of users and their data.
+- Click on a user card to see their posts and edit them if needed.
+- Remove user or post in 'x' click
+= Click on geolocation coordinates to view the user's location on the map.
 
 API CALLS
 --------------
