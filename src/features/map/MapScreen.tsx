@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import {MapScreenProps} from './models/mapModel';
-import {markerImage} from '../../constants/constants';
+import {logoImage} from '../../constants/constants';
 
 const MapScreen: React.FC<MapScreenProps> = ({route}) => {
   const {lat, lng} = route?.params || {lat: 0, lng: 0};
@@ -23,7 +23,7 @@ const MapScreen: React.FC<MapScreenProps> = ({route}) => {
         }}>
         <Marker coordinate={{latitude: lat, longitude: lng}}>
           <View style={styles.markerContainer}>
-            <Image source={markerImage} />
+            <Image source={logoImage} />
           </View>
         </Marker>
       </MapView>

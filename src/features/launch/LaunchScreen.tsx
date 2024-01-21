@@ -7,7 +7,7 @@ import {navigate} from '../../navigation/RootNavigation';
 import {useAppDispatch} from '../../store/Store';
 import {getUsersDataAction} from '../homepage/state/HomeAction';
 import {initAxios} from '../../utils/NetworkManager';
-import {markerImage} from '../../constants/constants';
+import {logoImage} from '../../constants/constants';
 
 const LaunchScreen: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +25,7 @@ const LaunchScreen: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.title_container}>
         <Text style={styles.title_text}>{LaunchStrings.APP_NAME}</Text>
-        <Image source={markerImage} />
+        <Image source={logoImage} />
       </View>
       <AppButton text={LaunchStrings.BUTTON_TEXT} onPress={handleEnterApp} />
     </View>

@@ -1,1 +1,1 @@
-export const markerImage = require('../assets/images/marker-logo.png');
+export const logoImage = require('../assets/images/marker-logo.png');
