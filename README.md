@@ -26,7 +26,7 @@ Get Posts By User ID:
 
 Installation
 -----------
-- Clone the repository: git clone https://github.com/yourusername/your-repo.git
+- Clone the repository: git clone 
 - Install dependencies: npm install
 - Install iOS Pods: cd ios && pod install
 - Run the app metro: npm start
