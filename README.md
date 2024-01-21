@@ -17,7 +17,7 @@ Click on geolocation coordinates to view the user's location on the map.
 API CALLS
 --------------
 Get All Users Data:
-= This call retrieves all user data.
+- This call retrieves all user data.
 
 Get Posts By User ID:
 - This call fetches posts associated with a specific user ID.
@@ -26,14 +26,15 @@ Get Posts By User ID:
 
 Installation
 -----------
-Clone the repository: git clone https://github.com/yourusername/your-repo.git
-Install dependencies: npm install
-Run the app metro: npm start
-Run Build iOS Env in Xcode
-Run Build Android Env in Android Studio
+- Clone the repository: git clone https://github.com/yourusername/your-repo.git
+- Install dependencies: npm install
+- Install iOS Pods: cd ios && pod install
+- Run the app metro: npm start
+- Run Build iOS Env in Xcode
+- Run Build Android Env in Android Studio
 
 Usage
 -------------
-Navigate to the Home Screen to view the list of users and their data.
-Click on a user card to see their posts and edit them if needed.
-Click on geolocation coordinates to view the user's location on the map.
+- Navigate to the Home Screen to view the list of users and their data.
+- Click on a user card to see their posts and edit them if needed.
+- Click on geolocation coordinates to view the user's location on the map.
